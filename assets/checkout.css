@@ -1,0 +1,31 @@
+/* Custom styles applied via Shopify Checkout Settings */
+.checkout-header {
+  background-color: var(--primary-green);
+  padding: 20px 0;
+}
+
+.checkout-logo {
+  filter: brightness(0) invert(1); /* Makes logo white on green background */
+}
+
+.order-summary {
+  background-color: #f9fafb;
+  border-radius: 8px;
+}
+
+.button--primary {
+  background-color: var(--eco-yellow) !important;
+  color: #000 !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Trust Badges in Checkout */
+.checkout-trust-badges {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #e1e1e1;
+}
