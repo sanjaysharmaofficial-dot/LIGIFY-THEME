@@ -1,8 +1,30 @@
 [
   {
-    "name": "Theme information",
-    "theme_name": "LIGIFY",
-    "theme_version": "1.0.0",
-    "theme_author": "Gemini Developer"
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary Eco Green",
+        "default": "#0F5132"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "CTA Yellow",
+        "default": "#F4C430"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "font_heading",
+        "label": "Heading Font",
+        "default": "montserrat_n7"
+      }
+    ]
   }
 ]
