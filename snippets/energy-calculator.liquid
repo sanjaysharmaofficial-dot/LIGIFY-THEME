@@ -1,0 +1,67 @@
+{% comment %}
+  LIGIFY Premium Feature: Energy Savings Calculator
+  Assumes product.metafields.specs.wattage contains the LED wattage (e.g., 9)
+{% endcomment %}
+
+{% assign led_wattage = product.metafields.specs.wattage | default: 10 %}
+
+<div class="energy-calculator mt-5 p-4 border rounded shadow-sm bg-light">
+  <h4 class="mb-3" style="color: var(--primary-green);">Energy Savings Estimator</h4>
+  <p class="small text-muted">See how much you save by switching to this {{ product.title }}</p>
+  
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label class="form-label small fw-bold">Current Bulb Wattage (Incandescent)</label>
+      <select id="old-wattage" class="form-select">
+        <option value="40">40W Standard</option>
+        <option value="60" selected>60W Standard</option>
+        <option value="75">75W Standard</option>
+        <option value="100">100W Standard</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label class="form-label small fw-bold">Daily Usage (Hours)</label>
+      <input type="number" id="usage-hours" class="form-control" value="5" min="1" max="24">
+    </div>
+  </div>
+
+  <div class="calculation-results mt-4 p-3 bg-white border-dashed rounded text-center">
+    <div class="row">
+      <div class="col-6 border-end">
+        <span class="d-block small text-uppercase">Annual Savings</span>
+        <h3 class="text-success mb-0">$<span id="annual-saving">0.00</span></h3>
+      </div>
+      <div class="col-6">
+        <span class="d-block small text-uppercase">CO2 Reduction</span>
+        <h3 class="text-primary mb-0"><span id="co2-saving">0</span> kg</h3>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const ledWatts = {{ led_wattage }};
+      const oldWattInput = document.getElementById('old-wattage');
+      const hoursInput = document.getElementById('usage-hours');
+      const annualEl = document.getElementById('annual-saving');
+      const co2El = document.getElementById('co2-saving');
+      const kwhCost = 0.15; // Average cost per kWh
+
+      function calculate() {
+        const oldWatts = parseFloat(oldWattInput.value);
+        const hours = parseFloat(hoursInput.value);
+        
+        // Calculation: ((Old - New) * hours * 365 days) / 1000 watts * cost
+        const yearlyKwhSaved = ((oldWatts - ledWatts) * hours * 365) / 1000;
+        const moneySaved = yearlyKwhSaved * kwhCost;
+        const co2Saved = yearlyKwhSaved * 0.4; // 0.4kg CO2 per kWh
+
+        annualEl.innerText = moneySaved.toFixed(2);
+        co2El.innerText = co2Saved.toFixed(1);
+      }
+
+      [oldWattInput, hoursInput].forEach(el => el.addEventListener('change', calculate));
+      calculate();
+    });
+  </script>
+</div>
