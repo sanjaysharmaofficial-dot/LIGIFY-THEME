@@ -1,6 +1,61 @@
-<footer style="background: #f8f9fa; padding: 60px 20px; margin-top: 50px; border-top: 1px solid #eee;">
-  <div class="container text-center">
-    <p style="color: #666;">&copy; {{ 'now' | date: "%Y" }} LIGIFY Eco-Lighting. Designed for professionals.</p>
+<footer class="site-footer bg-white border-top pt-5 pb-3">
+  <div class="container">
+    <div class="row g-4 mb-5">
+      <div class="col-lg-3 col-md-6">
+        <a href="/" class="footer-logo d-block mb-3">
+          <h2 class="h4 fw-bold" style="color: var(--primary-green);">LIGIFY</h2>
+        </a>
+        <p class="text-muted small">
+          Pioneering eco-smart lighting solutions for residential and commercial spaces. 
+          Leading the transition to sustainable, high-CRI illumination.
+        </p>
+        <div class="social-icons d-flex gap-3">
+          {% render 'icon-linkedin' %} {% render 'icon-instagram' %} {% render 'icon-youtube' %}
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-6">
+        <h6 class="fw-bold text-uppercase mb-3">Shop Systems</h6>
+        <ul class="list-unstyled small">
+          <li class="mb-2"><a href="/collections/led-panels" class="text-decoration-none text-muted">LED Flat Panels</a></li>
+          <li class="mb-2"><a href="/collections/smart-controls" class="text-decoration-none text-muted">IoT Controls</a></li>
+          <li class="mb-2"><a href="/collections/outdoor" class="text-decoration-none text-muted">Architectural Outdoor</a></li>
+          <li class="mb-2"><a href="/pages/wholesale" class="text-decoration-none text-muted">Wholesale Program</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <h6 class="fw-bold text-uppercase mb-3">Lighting Guides</h6>
+        <div class="footer-blog-feed">
+          {% for article in blogs['lighting-guides'].articles limit: 2 %}
+            <div class="d-flex align-items-center mb-3">
+              <div class="flex-shrink-0" style="width: 60px;">
+                <img src="{{ article.image | img_url: '100x100', crop: 'center' }}" class="img-fluid rounded" alt="">
+              </div>
+              <div class="flex-grow-1 ms-3">
+                <a href="{{ article.url }}" class="text-decoration-none text-dark small fw-bold d-block">{{ article.title }}</a>
+                <span class="text-muted x-small">{{ article.published_at | date: "%b %d, %Y" }}</span>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="support-card p-3 rounded" style="background-color: var(--light-gray);">
+          <h6 class="fw-bold mb-2">Expert Project Support</h6>
+          <p class="x-small text-muted mb-3">Need a layout design or photometrics? Our engineers are here to help.</p>
+          <a href="mailto:projects@ligify.com" class="btn btn-sm btn-primary-eco w-100">Contact Engineering</a>
+          <p class="x-small text-center mt-2 mb-0">Mon - Fri: 8am - 6pm EST</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom border-top pt-3 d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <p class="x-small text-muted mb-md-0">© {{ 'now' | date: "%Y" }} LIGIFY Eco-Smart Lighting. All rights reserved.</p>
+      <div class="payment-icons">
+        {% render 'icon-visa' %} {% render 'icon-mastercard' %} {% render 'icon-amex' %}
+      </div>
+    </div>
   </div>
 </footer>
-{% schema %} { "name": "Footer", "settings": [] } {% endschema %}
