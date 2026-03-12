@@ -1,0 +1,54 @@
+:root {
+  --primary-green: #0F5132;
+  --leaf-green: #2E8B57;
+  --eco-yellow: #F4C430;
+  --soft-yellow: #FFD84D;
+  --white: #FFFFFF;
+  --light-gray: #F5F5F5;
+  --font-main: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+  color: #333;
+  background-color: var(--white);
+}
+
+.btn-primary-eco {
+  background-color: var(--eco-yellow);
+  color: #000;
+  font-weight: 700;
+  padding: 12px 30px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-primary-eco:hover {
+  background-color: var(--soft-yellow);
+  transform: translateY(-2px);
+}
+
+.section-title {
+  color: var(--primary-green);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Specification Table for Lighting */
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.spec-table tr {
+  border-bottom: 1px solid #eee;
+}
+.spec-table td {
+  padding: 10px 0;
+  font-size: 0.9rem;
+}
+.spec-label {
+  font-weight: 600;
+  color: var(--primary-green);
+}
