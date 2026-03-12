@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "title": "Eco-Smart Lighting",
+        "btn_label": "Shop the Collection"
+      }
+    }
+  },
+  "order": ["hero"]
+}
