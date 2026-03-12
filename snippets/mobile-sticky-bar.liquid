@@ -1,0 +1,25 @@
+<div class="mobile-sticky-bar d-lg-none fixed-bottom bg-white border-top p-2 z-index-100">
+  <div class="d-flex gap-2">
+    <div class="flex-grow-1">
+      <button type="button" class="btn btn-outline-dark w-100 py-3 small fw-bold" onclick="document.querySelector('.product-specifications').scrollIntoView({behavior: 'smooth'})">
+        SPECS
+      </button>
+    </div>
+    <div class="flex-grow-2 w-100">
+      <button type="button" class="btn btn-primary-eco w-100 py-3 fw-bold" onclick="document.querySelector('[name=add]').click()">
+        ADD TO CART — {{ product.price | money_without_trailing_zeros }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .mobile-sticky-bar {
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.05);
+    display: none; /* Hidden by default */
+  }
+  @media (max-width: 991px) {
+    .mobile-sticky-bar { display: block; }
+    body { padding-bottom: 80px; } /* Prevent footer overlap */
+  }
+</style>
