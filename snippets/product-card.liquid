@@ -1,0 +1,24 @@
+<div class="product-card" data-product-id="{{ product.id }}">
+  <div class="product-card__image-wrapper">
+    <a href="{{ product.url }}">
+      <img class="lazyload" data-src="{{ product.featured_image | img_url: '600x600', crop: 'center' }}" alt="{{ product.title }}">
+    </a>
+    {% if product.compare_at_price > product.price %}
+      <span class="badge sale-badge">Energy Sale</span>
+    {% endif %}
+    <div class="product-card__actions">
+      <button class="quick-view-btn" data-handle="{{ product.handle }}">Quick View</button>
+    </div>
+  </div>
+  
+  <div class="product-card__info">
+    <p class="product-vendor">{{ product.vendor }}</p>
+    <h3 class="product-title"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    <div class="product-rating">
+      {% render 'rating-stars', rating: product.metafields.reviews.rating.value %}
+    </div>
+    <div class="product-price">
+      {% render 'price', product: product %}
+    </div>
+  </div>
+</div>
