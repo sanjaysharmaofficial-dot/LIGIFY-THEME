@@ -1,10 +1,38 @@
-<header style="background: #0F5132; color: white; padding: 20px;">
-  <div class="container d-flex justify-content-between align-items-center">
-    <h1 style="margin:0;">LIGIFY</h1>
-    <nav>
-      <a href="/" style="color:white; margin-right:15px; text-decoration:none;">Home</a>
-      <a href="/collections/all" style="color:white; text-decoration:none;">Shop Lighting</a>
-    </nav>
+<header class="site-header" data-section-id="{{ section.id }}" data-section-type="header">
+  <div class="container-fluid">
+    <div class="header-wrapper d-flex align-items-center justify-content-between">
+      
+      <div class="header-logo">
+        <a href="/" class="logo-link">
+          {% if section.settings.logo != blank %}
+            <img src="{{ section.settings.logo | img_url: '200x' }}" alt="{{ shop.name }}">
+          {% else %}
+            <span class="h3">{{ shop.name }}</span>
+          {% endif %}
+        </a>
+      </div>
+
+      <nav class="main-navigation d-none d-lg-block">
+        <ul class="nav-list d-flex">
+          {% for link in linklists[section.settings.menu].links %}
+            <li class="nav-item {% if link.links != blank %}has-megamenu{% endif %}">
+              <a href="{{ link.url }}" class="nav-link">{{ link.title }}</a>
+              {% if link.links != blank %}
+                {% render 'mega-menu', link: link %}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      <div class="header-actions d-flex align-items-center">
+        <button class="search-trigger">{% render 'icon-search' %}</button>
+        <a href="/account" class="account-link">{% render 'icon-user' %}</a>
+        <button class="cart-trigger" aria-controls="cart-drawer">
+          {% render 'icon-cart' %}
+          <span class="cart-count">{{ cart.item_count }}</span>
+        </button>
+      </div>
+    </div>
   </div>
 </header>
-{% schema %} { "name": "Header", "settings": [] } {% endschema %}
