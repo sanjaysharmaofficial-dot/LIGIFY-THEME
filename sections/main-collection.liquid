@@ -1,0 +1,17 @@
+<section style="padding: 60px 20px;">
+  <div class="container text-center">
+    <h1 style="margin-bottom: 40px; color: #0F5132;">{{ collection.title }}</h1>
+    <div class="row">
+      {% for product in collection.products %}
+        <div class="col-md-4" style="margin-bottom: 30px;">
+          <a href="{{ product.url }}" style="text-decoration: none; color: inherit;">
+            <img src="{{ product.featured_image | img_url: '400x400', crop: 'center' }}" style="width:100%; border-radius: 5px;">
+            <h3 style="margin: 15px 0 5px;">{{ product.title }}</h3>
+            <p style="color: #2E8B57; font-weight: bold;">{{ product.price | money }}</p>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% schema %} { "name": "Collection Page", "settings": [] } {% endschema %}
