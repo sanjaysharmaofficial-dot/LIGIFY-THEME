@@ -1,0 +1,29 @@
+<div class="mega-menu-dropdown px-4 py-5 shadow-lg bg-white border-top">
+  <div class="container">
+    <div class="row">
+      {% for childlink in link.links %}
+        <div class="col-md-3">
+          <h6 class="fw-bold text-uppercase mb-3" style="color: var(--primary-green);">{{ childlink.title }}</h6>
+          <ul class="list-unstyled">
+            {% for grandchildlink in childlink.links %}
+              <li class="mb-2">
+                <a href="{{ grandchildlink.url }}" class="text-decoration-none text-muted hover-green">
+                  {{ grandchildlink.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+
+      <div class="col-md-3 ms-auto">
+        <div class="menu-promo p-3 rounded text-white" style="background: var(--primary-green);">
+          <span class="badge bg-warning text-dark mb-2">New Tech</span>
+          <h5 class="fw-bold">Smart LED Controls</h5>
+          <p class="small">Reduce energy by up to 40% with IoT integrated dimmers.</p>
+          <a href="/collections/smart-lighting" class="btn btn-sm btn-outline-light mt-2">Explore Systems</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
