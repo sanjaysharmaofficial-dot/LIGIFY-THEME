@@ -1,0 +1,60 @@
+<section class="commercial-quote py-5" style="background-color: var(--primary-green); color: #fff;">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-5">
+        <h2 class="display-5 fw-bold mb-4">Commercial & Industrial Solutions</h2>
+        <p class="lead">Planning a large-scale project? Our engineers provide custom lighting layouts, IES files, and bulk wholesale pricing.</p>
+        <ul class="list-unstyled mt-4">
+          <li class="mb-2">✓ Volume Pricing Discounts</li>
+          <li class="mb-2">✓ Tax-Exempt Ordering</li>
+          <li class="mb-2">✓ Dedicated Project Manager</li>
+        </ul>
+      </div>
+      
+      <div class="col-lg-7">
+        <div class="card p-4 text-dark shadow-lg">
+          {% form 'contact' %}
+            {% if form.posted_successfully? %}
+              <div class="alert alert-success">Thank you! A commercial lighting specialist will contact you within 24 hours.</div>
+            {% endif %}
+
+            <div class="row g-3">
+              <div class="col-md-6">
+                <input type="text" name="contact[name]" class="form-control" placeholder="Full Name" required>
+              </div>
+              <div class="col-md-6">
+                <input type="email" name="contact[email]" class="form-control" placeholder="Work Email" required>
+              </div>
+              <div class="col-md-6">
+                <input type="text" name="contact[company]" class="form-control" placeholder="Company Name">
+              </div>
+              <div class="col-md-6">
+                <select name="contact[project_type]" class="form-select">
+                  <option value="">Project Type</option>
+                  <option value="Warehouse">Warehouse/Industrial</option>
+                  <option value="Office">Office Space</option>
+                  <option value="Retail">Retail Store</option>
+                  <option value="Outdoor">Outdoor/Parking</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <textarea name="contact[body]" class="form-control" rows="4" placeholder="Tell us about your project requirements (Total units, ceiling height, etc.)"></textarea>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary-eco w-100 py-3">Submit Quote Request</button>
+              </div>
+            </div>
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Commercial Quote Form",
+  "settings": [],
+  "presets": [{ "name": "Commercial Quote Form" }]
+}
+{% endschema %}
