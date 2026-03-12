@@ -1,0 +1,32 @@
+<div class="bulk-pricing-container my-4">
+  <h5 class="fw-bold">Bulk Purchase Rates</h5>
+  <div class="table-responsive">
+    <table class="table table-sm table-bordered">
+      <thead class="bg-light">
+        <tr>
+          <th>Quantity</th>
+          <th>Price Per Unit</th>
+          <th>Savings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1 - 10 units</td>
+          <td>{{ product.price | money }}</td>
+          <td>--</td>
+        </tr>
+        <tr>
+          <td>11 - 50 units</td>
+          <td>{{ product.price | times: 0.9 | money }}</td>
+          <td class="text-success">Save 10%</td>
+        </tr>
+        <tr>
+          <td>51+ units</td>
+          <td>{{ product.price | times: 0.8 | money }}</td>
+          <td class="text-success">Save 20%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small text-muted">*Applied automatically in checkout.</p>
+</div>
