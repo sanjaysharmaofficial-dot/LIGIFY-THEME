@@ -1,0 +1,11 @@
+<div class="guide-card border rounded overflow-hidden h-100 bg-white">
+  <div class="guide-image position-relative">
+    <img src="{{ article.image | img_url: '600x400', crop: 'center' }}" class="img-fluid" alt="{{ article.title }}">
+    <span class="badge position-absolute top-0 end-0 m-3" style="background: var(--leaf-green);">Expert Guide</span>
+  </div>
+  <div class="p-3">
+    <h5 class="h6 fw-bold">{{ article.title }}</h5>
+    <p class="small text-muted mb-3">{{ article.excerpt | strip_html | truncate: 80 }}</p>
+    <a href="{{ article.url }}" class="text-success small fw-bold text-decoration-none">Read More →</a>
+  </div>
+</div>
