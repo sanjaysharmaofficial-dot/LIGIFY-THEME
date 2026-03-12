@@ -1,0 +1,16 @@
+<section style="background: #F5F5F5; padding: 100px 20px; text-align: center;">
+  <h2 style="color: #0F5132; font-size: 3.5rem; margin-bottom: 20px;">{{ section.settings.title }}</h2>
+  <p style="font-size: 1.2rem; margin-bottom: 30px;">Premium LED solutions for a sustainable future.</p>
+  <a href="/collections/all" style="background: #F4C430; padding: 18px 35px; color: black; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block;">
+    {{ section.settings.btn_label }}
+  </a>
+</section>
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    { "id": "title", "type": "text", "label": "Heading", "default": "Eco-Smart Lighting" },
+    { "id": "btn_label", "type": "text", "label": "Button Label", "default": "Shop Now" }
+  ]
+}
+{% endschema %}
