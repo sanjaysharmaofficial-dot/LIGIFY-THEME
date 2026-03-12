@@ -52,3 +52,17 @@ body {
   font-weight: 600;
   color: var(--primary-green);
 }
+/* Color Temperature Visual Swatches */
+.filter-item[data-value*="2700K"] label::before { background: #FFD166; } /* Warm White */
+.filter-item[data-value*="4000K"] label::before { background: #F4F4F4; } /* Cool White */
+.filter-item[data-value*="6000K"] label::before { background: #CAF0F8; } /* Daylight */
+
+.filter-item input[type="checkbox"] {
+  accent-color: var(--leaf-green);
+}
+
+.collection-sidebar {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
