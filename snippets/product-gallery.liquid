@@ -1,0 +1,41 @@
+<div class="product-gallery" data-gallery-id="{{ section.id }}">
+  <div class="main-image-slider overflow-hidden rounded border bg-white mb-3">
+    <div class="swiper-wrapper">
+      {% for media in product.media %}
+        <div class="swiper-slide text-center" data-media-id="{{ media.id }}">
+          {% case media.media_type %}
+            {% when 'image' %}
+              <div class="zoom-container" onclick="openLightbox()">
+                <img class="img-fluid lazyload" 
+                     data-src="{{ media | img_url: '1200x' }}" 
+                     alt="{{ media.alt | escape }}"
+                     data-zoom="{{ media | img_url: '2400x' }}">
+              </div>
+            {% when 'video' %}
+              {{ media | video_tag: controls: true, class: 'w-100 h-auto' }}
+            {% when 'model' %}
+              {{ media | model_viewer_tag: reveal: 'interaction', toggleable: true, class: 'w-100' }}
+          {% endcase %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper-button-next text-success"></div>
+    <div class="swiper-button-prev text-success"></div>
+  </div>
+
+  <div class="thumbnail-slider swiper-container mt-2">
+    <div class="swiper-wrapper">
+      {% for media in product.media %}
+        <div class="swiper-slide cursor-pointer opacity-50 border rounded" style="width: 80px;">
+          <img src="{{ media | img_url: '150x150', crop: 'center' }}" class="img-fluid" alt="Thumb">
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .zoom-container { cursor: zoom-in; position: relative; overflow: hidden; }
+  .thumbnail-slider .swiper-slide-thumb-active { opacity: 1; border-color: var(--leaf-green) !important; }
+  .hover-green:hover { color: var(--leaf-green) !important; padding-left: 5px; transition: 0.2s; }
+</style>
